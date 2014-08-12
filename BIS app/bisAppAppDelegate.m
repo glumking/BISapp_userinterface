@@ -5,14 +5,17 @@
 //  Created by phillips on 6/10/14.
 //  Copyright (c) 2014 ICEHOUSE-internship. All rights reserved.
 //
-
 #import "bisAppAppDelegate.h"
+#import "Menu.h"
+#import "MainMenuTableViewController.h"
 
 @implementation bisAppAppDelegate
+{
+    NSMutableArray *_menuData;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     return YES;
 }
 							
