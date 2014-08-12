@@ -40,10 +40,20 @@
     }
     
     UILabel *textLabel = (UILabel *)[cell viewWithTag:201];
-        textLabel.text = self.subjects[indexPath.row];
+    
+    textLabel.text = self.subjects[indexPath.row];
+    
+    UILabel *textLabel2 = (UILabel *)[cell viewWithTag:206];
+    
+    textLabel2.text = @"example homework description : read textbooks from page 34 to sjkdbasdbkksnkasd play dota 3 for 3 hours";
+    
     UIImageView *imageView = (UIImageView *)[cell viewWithTag: 202];
-    imageView.image = [UIImage imageNamed:
-    [NSString stringWithFormat:@"icon_course_@2x.png",indexPath.row]];
+    
+    imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_course_@2x.png",indexPath.row]];
+    
+    UIImageView *imageView2 = (UIImageView *)[cell viewWithTag: 205];
+    
+    imageView2.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_calendar_@2x.png",indexPath.row]];
     
     return cell;
 }
@@ -77,11 +87,11 @@
     
     if(self.selectedIndexPath && indexPath.row == self.selectedIndexPath.row){
         
-        return [UIScreen mainScreen].bounds.size.height - 50;
+        return [UIScreen mainScreen].bounds.size.height - 100;
         
     }else{
         
-        return 44;
+        return 60;
         
     }
     
