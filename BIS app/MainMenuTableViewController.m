@@ -15,46 +15,60 @@
 @implementation MainMenuTableViewController
 
 {
+    
     NSArray *menuPics;
+
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
+        
+        
     }
+    
     return self;
+
 }
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     menuPics = [NSArray arrayWithObjects: @"icon_homework_@2x.png", @"icon_teacher_@2x.png", nil];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
+    
     [super didReceiveMemoryWarning];
-}
 
-#pragma mark - Table view data source
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    
     return 1;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return [self.players count];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainMenuCell"];
     
-    if (!cell) {
+    if (!cell){
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainMenuCell"];
         
@@ -69,6 +83,7 @@
     textLabel.text = menu.name;
     
     return cell;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

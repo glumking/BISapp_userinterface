@@ -33,6 +33,7 @@
     return UIStatusBarStyleLightContent;
     
 }
+
 -(void)viewWillAppear:(BOOL)animated
 {
     
@@ -76,6 +77,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.35f];
     CGRect frame = self.view.frame;
@@ -85,7 +87,8 @@
     
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
 
     [textField resignFirstResponder];
     
