@@ -19,6 +19,7 @@
 		8D3176D11994BAAE000A48FC /* icon_teacher_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3176C81994BAAE000A48FC /* icon_teacher_@2x.png */; };
 		8D3176D21994BAAE000A48FC /* logo_bis_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D3176C91994BAAE000A48FC /* logo_bis_@2x.png */; };
 		B9DFB9B81994A9DD0023A9B2 /* HomeworkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFB9B71994A9DD0023A9B2 /* HomeworkTableViewCell.m */; };
+		B9E6A994199B53DB00ABAB1E /* TeacherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E6A993199B53DB00ABAB1E /* TeacherTableViewController.m */; };
 		B9F04FAB1946AE370005A226 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAA1946AE370005A226 /* Foundation.framework */; };
 		B9F04FAD1946AE370005A226 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAC1946AE370005A226 /* CoreGraphics.framework */; };
 		B9F04FAF1946AE370005A226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAE1946AE370005A226 /* UIKit.framework */; };
@@ -61,6 +62,8 @@
 		8D3176C91994BAAE000A48FC /* logo_bis_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_bis_@2x.png"; path = "BIS app/retina/logo_bis_@2x.png"; sourceTree = SOURCE_ROOT; };
 		B9DFB9B61994A9DD0023A9B2 /* HomeworkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkTableViewCell.h; sourceTree = "<group>"; };
 		B9DFB9B71994A9DD0023A9B2 /* HomeworkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkTableViewCell.m; sourceTree = "<group>"; };
+		B9E6A992199B53DB00ABAB1E /* TeacherTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherTableViewController.h; sourceTree = "<group>"; };
+		B9E6A993199B53DB00ABAB1E /* TeacherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherTableViewController.m; sourceTree = "<group>"; };
 		B9F04FA71946AE370005A226 /* BIS app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BIS app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F04FAA1946AE370005A226 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B9F04FAC1946AE370005A226 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,6 +138,8 @@
 				B9F04FF61946CE370005A226 /* MainMenuTableViewController.m */,
 				B9F04FFB1946FB420005A226 /* HomeworkTableViewController.h */,
 				B9F04FFC1946FB420005A226 /* HomeworkTableViewController.m */,
+				B9E6A992199B53DB00ABAB1E /* TeacherTableViewController.h */,
+				B9E6A993199B53DB00ABAB1E /* TeacherTableViewController.m */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			files = (
 				B9F04FFA1946CECF0005A226 /* Menu.m in Sources */,
 				B9DFB9B81994A9DD0023A9B2 /* HomeworkTableViewCell.m in Sources */,
+				B9E6A994199B53DB00ABAB1E /* TeacherTableViewController.m in Sources */,
 				B9F04FF71946CE370005A226 /* MainMenuTableViewController.m in Sources */,
 				B9F04FB71946AE370005A226 /* main.m in Sources */,
 				B9F04FFD1946FB420005A226 /* HomeworkTableViewController.m in Sources */,

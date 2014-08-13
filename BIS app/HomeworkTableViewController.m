@@ -55,11 +55,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SubjectCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeworkCell"];
     
     if (!cell) {
         
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SubjectCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HomeworkCell"];
         cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         cell.clipsToBounds = YES;
     }
@@ -81,11 +81,6 @@
     
     UIImageView *imageView2 = (UIImageView *)[cell viewWithTag: 205];
     imageView2.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_calendar_@2x.png",indexPath.row]];
-    
-    
-    UIView *customBorder = [[UIView alloc] initWithFrame:CGRectMake(10, cell.frame.size.height-1, cell.frame.size.width-10, 1)];
-    [customBorder setBackgroundColor:[UIColor grayColor]];
-    [cell.contentView addSubview:customBorder];
     
     return cell;
 }

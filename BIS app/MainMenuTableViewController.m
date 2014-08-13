@@ -7,6 +7,7 @@
 //
 #import "HomeworkTableViewController.h"
 #import "MainMenuTableViewController.h"
+#import "TeacherTableViewController.h"
 #import "Menu.h"
 #import <UIKit/UIKit.h>
 
@@ -107,8 +108,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier  isEqual: @"homeworkSegue"]) {
+        
         [self prepareHomeworkSegue:segue];
-    } else {
+        
+    } else if([segue.identifier  isEqual: @"teacherSegue"]){
+        
+        [self prepareTeacherSegue:segue];
         
     }
     
@@ -116,7 +121,7 @@
 
 - (void)prepareHomeworkSegue:(UIStoryboardSegue*)segue
 {
-    HomeworkTableViewController *subjectVC = (HomeworkTableViewController*) [segue destinationViewController];
+    HomeworkTableViewController *homeworkVC = (HomeworkTableViewController*) [segue destinationViewController];
     
     //TODO : Change this part with the networking code
     
@@ -144,7 +149,32 @@
                                      
                                      };
     
-    subjectVC.homework = @[mathHomework, engishHomework];
+    homeworkVC.homework = @[mathHomework, engishHomework];
+}
+
+-(void)prepareTeacherSegue:(UIStoryboardSegue *)segue
+{
+    TeacherTableViewController *teacherVC = (TeacherTableViewController*) [segue destinationViewController];
+    
+    NSDictionary *teacher1 = @{
+                               
+                               @"id":@0,
+                               @"name":@"Philippe",
+                               @"email":@"17pangestup@bis.or.id"
+                               
+                               };
+    
+    NSDictionary *teacher2 = @{
+                               
+                               @"id":@1,
+                               @"name":@"Hans",
+                               @"email":@"17Wahonoh@bis.or.id"
+                               
+                               };
+    
+    
+    teacherVC.teachers = @[teacher1, teacher2];
+    
 }
 
 -(void)addAlertView{
