@@ -11,6 +11,8 @@
 
 @interface SubjectTableViewController ()
 
+@property (nonatomic,strong) UILabel *dummylabel;
+
 @end
 
 @implementation SubjectTableViewController
@@ -20,8 +22,18 @@
     
     [super viewDidLoad];
     
-    [self.tableView addPullToRefreshWithActionHandler:^{}];
-
+    [self.tableView addPullToRefreshWithActionHandler:^{
+    
+        //to do add AFNetworking code
+    
+    }];
+    
+    self.dummylabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 257, 17)];
+    
+    [self.dummylabel setFont:[UIFont systemFontOfSize:14]];
+    
+    [self.dummylabel setNumberOfLines:0];
+    
 }
 
 #pragma mark - Table view data source
@@ -57,7 +69,7 @@
     textLabel.text = self.subjects[indexPath.row];
     
     UILabel *textLabel2 = (UILabel *)[cell viewWithTag:206];
-    textLabel2.text = @"example homework description : read textbooks from page 34 to sjkdbasdbkksnkasd play dota 3 for 3 hours";
+    textLabel2.text = @"example homework description";
     
     UIImageView *imageView = (UIImageView *)[cell viewWithTag: 202];
     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_course_@2x.png",indexPath.row]];
@@ -90,10 +102,17 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if(self.selectedIndexPath && indexPath.row == self.selectedIndexPath.row){
+    if(self.selectedIndexPath && indexPath.row == self.selectedIndexPath.row)
+    {
         
-        return [UIScreen mainScreen].bounds.size.height - 100;
+        self.dummylabel.text = @"example homework description" ;
         
+        NSInteger height = [self.dummylabel sizeThatFits:self.dummylabel.frame.size].height;
+        
+        NSLog(@"The height of dummy label : %d",height);
+        
+        return 110+ height;
+    
     }else{
         
         return 60;
