@@ -62,7 +62,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SubjectCell"];
         cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         cell.clipsToBounds = YES;
-        
     }
     
     UILabel *subjectLabel = (UILabel *)[cell viewWithTag:201];
@@ -71,14 +70,24 @@
     UILabel *homeworkDescription = (UILabel *)[cell viewWithTag:206];
     homeworkDescription.text = [self.homework[indexPath.row] objectForKey:@"description"];;
     
+    UILabel *homeworkTitle = (UILabel *)[cell viewWithTag:203];
+    homeworkTitle.text = [self.homework[indexPath.row] objectForKey:@"title"];;
+    
+    UILabel *homeworkdate = (UILabel *)[cell viewWithTag:204];
+    homeworkdate.text = [self.homework[indexPath.row] objectForKey:@"due_date"];;
+    
     UIImageView *imageView = (UIImageView *)[cell viewWithTag: 202];
     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_course_@2x.png",indexPath.row]];
     
     UIImageView *imageView2 = (UIImageView *)[cell viewWithTag: 205];
     imageView2.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_calendar_@2x.png",indexPath.row]];
     
-    return cell;
     
+    UIView *customBorder = [[UIView alloc] initWithFrame:CGRectMake(10, cell.frame.size.height-1, cell.frame.size.width-10, 1)];
+    [customBorder setBackgroundColor:[UIColor grayColor]];
+    [cell.contentView addSubview:customBorder];
+    
+    return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

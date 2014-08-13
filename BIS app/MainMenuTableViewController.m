@@ -106,7 +106,16 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier  isEqual: @"homeworkSegue"]) {
+        [self prepareHomeworkSegue:segue];
+    } else {
         
+    }
+    
+}
+
+- (void)prepareHomeworkSegue:(UIStoryboardSegue*)segue
+{
     HomeworkTableViewController *subjectVC = (HomeworkTableViewController*) [segue destinationViewController];
     
     //TODO : Change this part with the networking code
@@ -120,28 +129,27 @@
                                     @"description": @"summer homework so your brain wont rust",
                                     @"schedule_id": @2,
                                     @"sort_order": @0
-        
-                                    };
-    
-    NSDictionary *engishHomework = @{
-                                   
-                                   @"id": @0,
-                                   @"subject": @"English",
-                                   @"title": @"Summer Homework",
-                                   @"due_date": @"10/10/2014",
-                                   @"description": @"READ DR J AND MR HYDE",
-                                   @"schedule_id": @2,
-                                   @"sort_order": @0
                                    
                                    };
     
-    subjectVC.homework = @[mathHomework, engishHomework];
+    NSDictionary *engishHomework = @{
+                                     
+                                     @"id": @0,
+                                     @"subject": @"English",
+                                     @"title": @"Summer Homework",
+                                     @"due_date": @"10/10/2014",
+                                     @"description": @"READ DR J AND MR HYDE",
+                                     @"schedule_id": @2,
+                                     @"sort_order": @0
+                                     
+                                     };
     
+    subjectVC.homework = @[mathHomework, engishHomework];
 }
 
 -(void)addAlertView{
     UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Login failed" message:@"Please try again" delegate:self
-    cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [alertView show];
 }
 
