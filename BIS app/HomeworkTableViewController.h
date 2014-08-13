@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SubjectTableViewController : UITableViewController
+@interface HomeworkTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray *subjects;
+@property (nonatomic, strong) NSArray *homework;
 
 @property (nonatomic,strong) NSIndexPath *selectedIndexPath;
 

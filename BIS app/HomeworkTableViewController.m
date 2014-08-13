@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 ICEHOUSE-internship. All rights reserved.
 //
 
-#import "SubjectTableViewController.h"
+#import "HomeworkTableViewController.h"
 #import "UIScrollView+SVPullToRefresh.h"
 
-@interface SubjectTableViewController ()
+@interface HomeworkTableViewController ()
 
 @property (nonatomic,strong) UILabel *dummylabel;
 
 @end
 
-@implementation SubjectTableViewController
+@implementation HomeworkTableViewController
 
 -(void)viewDidLoad
 {
@@ -48,7 +48,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
  
-    return self.subjects.count;
+    return self.homework.count;
 
 }
 
@@ -65,11 +65,11 @@
         
     }
     
-    UILabel *textLabel = (UILabel *)[cell viewWithTag:201];
-    textLabel.text = self.subjects[indexPath.row];
+    UILabel *subjectLabel = (UILabel *)[cell viewWithTag:201];
+    subjectLabel.text = [self.homework[indexPath.row] objectForKey:@"subject"];
     
-    UILabel *textLabel2 = (UILabel *)[cell viewWithTag:206];
-    textLabel2.text = @"example homework description";
+    UILabel *homeworkDescription = (UILabel *)[cell viewWithTag:206];
+    homeworkDescription.text = [self.homework[indexPath.row] objectForKey:@"description"];;
     
     UIImageView *imageView = (UIImageView *)[cell viewWithTag: 202];
     imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_course_@2x.png",indexPath.row]];
@@ -105,7 +105,7 @@
     if(self.selectedIndexPath && indexPath.row == self.selectedIndexPath.row)
     {
         
-        self.dummylabel.text = @"example homework description" ;
+        self.dummylabel.text = [self.homework[indexPath.row] objectForKey:@"description"];;
         
         NSInteger height = [self.dummylabel sizeThatFits:self.dummylabel.frame.size].height;
         

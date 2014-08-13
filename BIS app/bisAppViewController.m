@@ -71,7 +71,7 @@
     [_menuData addObject:menu2];
     
     MainMenuTableViewController *bisAppTVC = (MainMenuTableViewController *) [segue destinationViewController];
-    bisAppTVC.players =  _menuData;
+    bisAppTVC.menu =  _menuData;
     
 }
 

@@ -5,7 +5,7 @@
 //  Created by phillips on 6/10/14.
 //  Copyright (c) 2014 ICEHOUSE-internship. All rights reserved.
 //
-#import "SubjectTableViewController.h"
+#import "HomeworkTableViewController.h"
 #import "MainMenuTableViewController.h"
 #import "Menu.h"
 @interface MainMenuTableViewController ()
@@ -59,7 +59,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [self.players count];
+    return [self.menu count];
 
 }
 
@@ -74,7 +74,7 @@
         
     }
     
-    Menu *menu = (self.players)[indexPath.row];
+    Menu *menu = (self.menu)[indexPath.row];
 
     UIImageView *imageView = (UIImageView *)[cell viewWithTag: 102];
     imageView.image = [UIImage imageNamed:[menuPics objectAtIndex:indexPath.row]];
@@ -103,16 +103,37 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier  isEqual: @"homeworkSegue"]) {
         
-        SubjectTableViewController *subjectVC = (SubjectTableViewController*) [segue destinationViewController];
-        subjectVC.subjects = @[@"Math",@"Chinese",@"English",@"Physics",@"Biology",@"Chemistry",@"Global Perspective"];
+    HomeworkTableViewController *subjectVC = (HomeworkTableViewController*) [segue destinationViewController];
+    
+    //TODO : Change this part with the networking code
+    
+    NSDictionary *mathHomework = @{
+                                   
+                                        @"id": @0,
+                                        @"subject": @"Math",
+                                        @"title": @"Summer Homework",
+                                        @"due_date": @"10/10/2014",
+                                        @"description": @"summer homework so your brain wont rust",
+                                        @"schedule_id": @2,
+                                        @"sort_order": @0
         
-    }else{
-        
-        
-        
-    }
+                                    };
+    
+    NSDictionary *engishHomework = @{
+                                   
+                                   @"id": @0,
+                                   @"subject": @"Math",
+                                   @"title": @"Summer Homework",
+                                   @"due_date": @"10/10/2014",
+                                   @"description": @"summer homework so your brain wont rust",
+                                   @"schedule_id": @2,
+                                   @"sort_order": @0
+                                   
+                                   };
+    
+    subjectVC.homework = @[mathHomework, engishHomework];
+    
 }
 
 @end

@@ -33,7 +33,7 @@
 		B9F04FCF1946AE370005A226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAE1946AE370005A226 /* UIKit.framework */; };
 		B9F04FF71946CE370005A226 /* MainMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F04FF61946CE370005A226 /* MainMenuTableViewController.m */; };
 		B9F04FFA1946CECF0005A226 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F04FF91946CECF0005A226 /* Menu.m */; };
-		B9F04FFD1946FB420005A226 /* SubjectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F04FFC1946FB420005A226 /* SubjectTableViewController.m */; };
+		B9F04FFD1946FB420005A226 /* HomeworkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F04FFC1946FB420005A226 /* HomeworkTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +81,8 @@
 		B9F04FF61946CE370005A226 /* MainMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuTableViewController.m; sourceTree = "<group>"; };
 		B9F04FF81946CECF0005A226 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		B9F04FF91946CECF0005A226 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
-		B9F04FFB1946FB420005A226 /* SubjectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectTableViewController.h; sourceTree = "<group>"; };
-		B9F04FFC1946FB420005A226 /* SubjectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectTableViewController.m; sourceTree = "<group>"; };
+		B9F04FFB1946FB420005A226 /* HomeworkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeworkTableViewController.h; sourceTree = "<group>"; };
+		B9F04FFC1946FB420005A226 /* HomeworkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeworkTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +133,8 @@
 			children = (
 				B9F04FF51946CE370005A226 /* MainMenuTableViewController.h */,
 				B9F04FF61946CE370005A226 /* MainMenuTableViewController.m */,
-				B9F04FFB1946FB420005A226 /* SubjectTableViewController.h */,
-				B9F04FFC1946FB420005A226 /* SubjectTableViewController.m */,
+				B9F04FFB1946FB420005A226 /* HomeworkTableViewController.h */,
+				B9F04FFC1946FB420005A226 /* HomeworkTableViewController.m */,
 			);
 			name = TableViewControllers;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				B9DFB9B81994A9DD0023A9B2 /* HomeworkTableViewCell.m in Sources */,
 				B9F04FF71946CE370005A226 /* MainMenuTableViewController.m in Sources */,
 				B9F04FB71946AE370005A226 /* main.m in Sources */,
-				B9F04FFD1946FB420005A226 /* SubjectTableViewController.m in Sources */,
+				B9F04FFD1946FB420005A226 /* HomeworkTableViewController.m in Sources */,
 				B9F04FBB1946AE370005A226 /* bisAppAppDelegate.m in Sources */,
 				B9F04FC41946AE370005A226 /* bisAppViewController.m in Sources */,
 			);
