@@ -8,6 +8,8 @@
 #import "HomeworkTableViewController.h"
 #import "MainMenuTableViewController.h"
 #import "Menu.h"
+#import <UIKit/UIKit.h>
+
 @interface MainMenuTableViewController ()
 
 @end
@@ -40,6 +42,7 @@
     [super viewDidLoad];
     menuPics = [NSArray arrayWithObjects: @"icon_homework_@2x.png", @"icon_teacher_@2x.png", nil];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self addAlertView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,23 +113,23 @@
     
     NSDictionary *mathHomework = @{
                                    
-                                        @"id": @0,
-                                        @"subject": @"Math",
-                                        @"title": @"Summer Homework",
-                                        @"due_date": @"10/10/2014",
-                                        @"description": @"summer homework so your brain wont rust",
-                                        @"schedule_id": @2,
-                                        @"sort_order": @0
+                                    @"id": @0,
+                                    @"subject": @"Math",
+                                    @"title": @"Summer Homework",
+                                    @"due_date": @"10/10/2014",
+                                    @"description": @"summer homework so your brain wont rust",
+                                    @"schedule_id": @2,
+                                    @"sort_order": @0
         
                                     };
     
     NSDictionary *engishHomework = @{
                                    
                                    @"id": @0,
-                                   @"subject": @"Math",
+                                   @"subject": @"English",
                                    @"title": @"Summer Homework",
                                    @"due_date": @"10/10/2014",
-                                   @"description": @"summer homework so your brain wont rust",
+                                   @"description": @"READ DR J AND MR HYDE",
                                    @"schedule_id": @2,
                                    @"sort_order": @0
                                    
@@ -135,5 +138,14 @@
     subjectVC.homework = @[mathHomework, engishHomework];
     
 }
+
+-(void)addAlertView{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Login failed" message:@"Please try again" delegate:self
+    cancelButtonTitle:@"ok" otherButtonTitles: nil];
+    [alertView show];
+}
+
+#pragma mark - Alert view delegate
+
 
 @end
