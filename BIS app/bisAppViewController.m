@@ -12,6 +12,7 @@
 #import <AFNetworking.h>
 #import "UserService.h"
 #import <SVProgressHUD.h>
+#import "NetworkService.h"
 
 @interface bisAppViewController () <UITextFieldDelegate>
 
@@ -117,38 +118,29 @@
 -(void)login
 {
     [SVProgressHUD show];
-    NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
-    
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
-    
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"text/html"];
-
+   
     NSDictionary *loginData = @{@"username": self.usernameField.text, @"password": self.passwordField.text};
     
-    [manager POST:@"/login" parameters:loginData
+    [NetworkService loginWithData:loginData OnSuccess:^(id responseObject)
+    {
+        
+        NSString *userID = [responseObject objectForKey:@"id"];
+        
+        [UserService storeUserID:userID];
+        
+        [SVProgressHUD dismiss];
+        
+        [self performSegueWithIdentifier:@"loginSegue" sender:self];
+        
+    } onFail:^(id operation, NSError *error)
+    {
      
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              
-              NSString *userID = [responseObject objectForKey:@"id"];
-              
-              [UserService storeUserID:userID];
-              
-              [SVProgressHUD dismiss];
-              
-              [self performSegueWithIdentifier:@"loginSegue" sender:self];
-              
-        }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              
-              [SVProgressHUD dismiss];
-              
+        [SVProgressHUD dismiss];
+        
         [self addAlertView];
+        
     }];
+    
 }
 
 @end

@@ -22,6 +22,7 @@
 		B9E6A994199B53DB00ABAB1E /* TeacherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E6A993199B53DB00ABAB1E /* TeacherTableViewController.m */; };
 		B9E6A998199C631400ABAB1E /* CalendarService.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E6A997199C631400ABAB1E /* CalendarService.m */; };
 		B9E6A99B199C96D000ABAB1E /* UserService.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E6A99A199C96D000ABAB1E /* UserService.m */; };
+		B9E6A99E199CAB5E00ABAB1E /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E6A99D199CAB5E00ABAB1E /* NetworkService.m */; };
 		B9F04FAB1946AE370005A226 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAA1946AE370005A226 /* Foundation.framework */; };
 		B9F04FAD1946AE370005A226 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAC1946AE370005A226 /* CoreGraphics.framework */; };
 		B9F04FAF1946AE370005A226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9F04FAE1946AE370005A226 /* UIKit.framework */; };
@@ -70,6 +71,8 @@
 		B9E6A997199C631400ABAB1E /* CalendarService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarService.m; sourceTree = "<group>"; };
 		B9E6A999199C96D000ABAB1E /* UserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserService.h; sourceTree = "<group>"; };
 		B9E6A99A199C96D000ABAB1E /* UserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserService.m; sourceTree = "<group>"; };
+		B9E6A99C199CAB5E00ABAB1E /* NetworkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
+		B9E6A99D199CAB5E00ABAB1E /* NetworkService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
 		B9F04FA71946AE370005A226 /* BIS app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BIS app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9F04FAA1946AE370005A226 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B9F04FAC1946AE370005A226 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +180,8 @@
 				B9E6A997199C631400ABAB1E /* CalendarService.m */,
 				B9E6A999199C96D000ABAB1E /* UserService.h */,
 				B9E6A99A199C96D000ABAB1E /* UserService.m */,
+				B9E6A99C199CAB5E00ABAB1E /* NetworkService.h */,
+				B9E6A99D199CAB5E00ABAB1E /* NetworkService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				B9F04FFD1946FB420005A226 /* HomeworkTableViewController.m in Sources */,
 				B9F04FBB1946AE370005A226 /* bisAppAppDelegate.m in Sources */,
 				B9E6A99B199C96D000ABAB1E /* UserService.m in Sources */,
+				B9E6A99E199CAB5E00ABAB1E /* NetworkService.m in Sources */,
 				B9F04FC41946AE370005A226 /* bisAppViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
