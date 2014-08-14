@@ -11,6 +11,7 @@
 #import "Menu.h"
 #import <AFNetworking.h>
 #import "UserService.h"
+#import <SVProgressHUD.h>
 
 @interface bisAppViewController () <UITextFieldDelegate>
 
@@ -115,6 +116,7 @@
 
 -(void)login
 {
+    [SVProgressHUD show];
     NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
@@ -136,9 +138,14 @@
               
               [UserService storeUserID:userID];
               
+              [SVProgressHUD dismiss];
+              
               [self performSegueWithIdentifier:@"loginSegue" sender:self];
+              
         }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              
+              [SVProgressHUD dismiss];
               
         [self addAlertView];
     }];
