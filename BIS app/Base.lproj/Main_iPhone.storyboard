@@ -62,9 +62,6 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="Whe-6Z-MeN" kind="push" id="Kd5-E4-Lj2"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mi2-ij-5A6">
                                 <rect key="frame" x="50" y="352" width="221" height="17"/>
@@ -139,13 +136,15 @@
                     <navigationItem key="navigationItem" id="UWr-fQ-pgO"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="loginButton" destination="0Yp-jU-y0h" id="BJv-4a-OE4"/>
                         <outlet property="passwordField" destination="mi2-ij-5A6" id="RNR-pA-ICL"/>
                         <outlet property="usernameField" destination="19I-T1-kzR" id="NaU-9r-ota"/>
+                        <segue destination="Whe-6Z-MeN" kind="push" identifier="loginSegue" id="J0w-ea-Q1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-466" y="169"/>
+            <point key="canvasLocation" x="-452" y="169"/>
         </scene>
         <!--Main Menu Table View Controller - Welcome BIS-->
         <scene sceneID="e2w-UV-FJ6">

@@ -13,6 +13,7 @@
 
 + (void)addEventsToCalendar:(NSArray *)events
 {
+    
     EKEventStore *store = [[EKEventStore alloc] init];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

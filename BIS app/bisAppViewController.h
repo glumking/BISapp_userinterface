@@ -14,4 +14,6 @@
 
 @property (nonatomic,strong) IBOutlet UITextField *passwordField;
 
+@property (nonatomic,strong) IBOutlet UIButton *loginButton;
+
 @end

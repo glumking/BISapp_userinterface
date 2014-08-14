@@ -44,7 +44,6 @@
     [super viewDidLoad];
     menuPics = [NSArray arrayWithObjects: @"icon_homework_@2x.png", @"icon_teacher_@2x.png", nil];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self addAlertView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -179,11 +178,7 @@
     
 }
 
--(void)addAlertView{
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Login failed" message:@"Please try again" delegate:self
-    cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alertView show];
-}
+
 
 #pragma mark - Alert view delegate
 
