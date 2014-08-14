@@ -33,21 +33,23 @@
         
         NSDate *calendarDate = [dateFormatter dateFromString:homeworkDueDate];
         
+        NSTimeInterval startInterval = -60*60*6;
+        NSTimeInterval endInterval = 60*60*7;
+        
         [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
         {
-            
             if (!granted) { return; }
             EKEvent *calendarEvent = [EKEvent eventWithEventStore:store];
             calendarEvent.title = calendarTitle;
             calendarEvent.notes = homeworkDescription;
-            calendarEvent.startDate = [calendarDate dateByAddingTimeInterval:-60*60*24];
-            calendarEvent.allDay = YES;
-            calendarEvent.endDate = calendarDate;
+            calendarEvent.startDate = [calendarDate dateByAddingTimeInterval:startInterval];
+            calendarEvent.endDate = [calendarDate dateByAddingTimeInterval:endInterval];
+            
+            [calendarEvent addAlarm:[EKAlarm alarmWithRelativeOffset:startInterval]];
             [calendarEvent setCalendar:[store defaultCalendarForNewEvents]];
+            
             NSError *err = nil;
             [store saveEvent:calendarEvent span:EKSpanThisEvent commit:YES error:&err];
-            //NSString *savedEventId = calendarEvent.eventIdentifier;
-        
         }];
         
     }

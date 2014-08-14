@@ -131,7 +131,7 @@
                                     @"id": @0,
                                     @"subject": @"Math",
                                     @"title": @"Summer Homework",
-                                    @"due_date": @"2014-10-10",
+                                    @"due_date": @"2014-08-15",
                                     @"description": @"summer homework so your brain wont rust",
                                     @"schedule_id": @2,
                                     @"sort_order": @0
@@ -143,7 +143,7 @@
                                      @"id": @0,
                                      @"subject": @"English",
                                      @"title": @"Summer Homework",
-                                     @"due_date": @"2014-10-10",
+                                     @"due_date": @"2014-08-15",
                                      @"description": @"READ DR J AND MR HYDE",
                                      @"schedule_id": @2,
                                      @"sort_order": @0
