@@ -11,6 +11,9 @@
 #import "Menu.h"
 #import <UIKit/UIKit.h>
 #import "CalendarService.h"
+#import <SVProgressHUD.h>
+#import <AFNetworking.h>
+#import "UserService.h"
 
 @interface MainMenuTableViewController ()
 
@@ -123,34 +126,40 @@
 {
     HomeworkTableViewController *homeworkVC = (HomeworkTableViewController*) [segue destinationViewController];
     
-    //TODO : Change this part with the networking code
+    [SVProgressHUD show];
+    NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
     
-    NSDictionary *mathHomework = @{
-                                   
-                                    @"id": @0,
-                                    @"subject": @"Math",
-                                    @"title": @"Summer Homework",
-                                    @"due_date": @"2014-08-15",
-                                    @"description": @"summer homework so your brain wont rust",
-                                    @"schedule_id": @2,
-                                    @"sort_order": @0
-                                   
-                                   };
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
-    NSDictionary *engishHomework = @{
-                                     
-                                     @"id": @0,
-                                     @"subject": @"English",
-                                     @"title": @"Summer Homework",
-                                     @"due_date": @"2014-08-15",
-                                     @"description": @"READ DR J AND MR HYDE",
-                                     @"schedule_id": @2,
-                                     @"sort_order": @0
-                                     
-                                     };
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    homeworkVC.homework = @[mathHomework, engishHomework];
-    [CalendarService addEventsToCalendar:homeworkVC.homework];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"text/html"];
+    
+    NSString *userID = [UserService retrieveUserID];
+    
+    NSString *url = [NSString stringWithFormat: @"/homework/list/%@",userID];
+    
+    [manager GET:url parameters:nil
+     
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              
+              homeworkVC.homework = responseObject;
+              
+              [homeworkVC.tableView reloadData];
+              
+              [CalendarService addEventsToCalendar:homeworkVC.homework];
+              
+              [SVProgressHUD dismiss];
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              
+              [SVProgressHUD dismiss];
+              
+          }];
 }
 
 -(void)prepareTeacherSegue:(UIStoryboardSegue *)segue
