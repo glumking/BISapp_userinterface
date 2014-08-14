@@ -10,6 +10,7 @@
 #import "TeacherTableViewController.h"
 #import "Menu.h"
 #import <UIKit/UIKit.h>
+#import "CalendarService.h"
 
 @interface MainMenuTableViewController ()
 
@@ -130,7 +131,7 @@
                                     @"id": @0,
                                     @"subject": @"Math",
                                     @"title": @"Summer Homework",
-                                    @"due_date": @"10/10/2014",
+                                    @"due_date": @"2014-10-10",
                                     @"description": @"summer homework so your brain wont rust",
                                     @"schedule_id": @2,
                                     @"sort_order": @0
@@ -142,7 +143,7 @@
                                      @"id": @0,
                                      @"subject": @"English",
                                      @"title": @"Summer Homework",
-                                     @"due_date": @"10/10/2014",
+                                     @"due_date": @"2014-10-10",
                                      @"description": @"READ DR J AND MR HYDE",
                                      @"schedule_id": @2,
                                      @"sort_order": @0
@@ -150,6 +151,7 @@
                                      };
     
     homeworkVC.homework = @[mathHomework, engishHomework];
+    [CalendarService addEventsToCalendar:homeworkVC.homework];
 }
 
 -(void)prepareTeacherSegue:(UIStoryboardSegue *)segue
