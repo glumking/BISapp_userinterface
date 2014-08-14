@@ -19,7 +19,9 @@
     
     [dateFormatter setDateFormat: @"yyyy'-'MM'-'dd"];
     
-    for (NSDictionary *event in events)
+    NSArray *unstoredEvents = [CalendarService removeStoredEvents:events];
+    
+    for (NSDictionary *event in unstoredEvents)
     {
         NSString *homeworkTitle = [event objectForKey: @"title"];
         
@@ -53,8 +55,28 @@
         }];
         
     }
-
     
 }
 
++ (void)storeEvents:(NSArray *)events
+{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:events forKey:@"homeworkEvents"];
+    
+}
+
++ (NSArray*)removeStoredEvents:(NSArray *)events
+{
+    
+    NSMutableArray  *unstoredEvents = [events mutableCopy];
+    
+    NSArray *storedEvents = [[NSUserDefaults standardUserDefaults] objectForKey:@"homeworkEvents"];
+    
+    [unstoredEvents removeObjectsInArray:storedEvents];
+    
+    [CalendarService storeEvents:unstoredEvents];
+    
+    return unstoredEvents;
+    
+}
 @end
