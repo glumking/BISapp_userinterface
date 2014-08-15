@@ -44,9 +44,27 @@
 - (void)viewDidLoad
 {
     
+    UIImage* image3 = [UIImage imageNamed:@"icon_logout_@2x.png"];
+    CGRect frameimg = CGRectMake(15,5, 25,25);
+    
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:image3 forState:UIControlStateNormal];
+    [someButton addTarget:self action:@selector(Back_btn:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *mailbutton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+    self.navigationItem.leftBarButtonItem =mailbutton;
     [super viewDidLoad];
     menuPics = [NSArray arrayWithObjects: @"icon_homework_@2x.png", @"icon_teacher_@2x.png", nil];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+}
+
+-(IBAction)Back_btn:(id)sender
+{
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 

@@ -117,6 +117,8 @@
 
 -(void)login
 {
+    
+    
     [SVProgressHUD show];
    
     NSDictionary *loginData = @{@"username": self.usernameField.text, @"password": self.passwordField.text};
@@ -132,6 +134,14 @@
         
         [self performSegueWithIdentifier:@"loginSegue" sender:self];
         
+        self.usernameField.text = @"";
+        
+        self.passwordField.text = @"";
+        
+        [self.usernameField resignFirstResponder];
+        
+        [self.passwordField resignFirstResponder];
+        
     } onFail:^(id operation, NSError *error)
     {
      
@@ -140,6 +150,8 @@
         [self addAlertView];
         
     }];
+    
+    
     
 }
 
