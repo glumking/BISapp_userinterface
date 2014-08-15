@@ -254,6 +254,11 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view tag="707" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRb-dg-Dbg">
+                                            <rect key="frame" x="18" y="0.0" width="306" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.55877311862244894" green="0.55877311862244894" blue="0.55877311862244894" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="9oN-kC-usN" firstAttribute="trailing" secondItem="RcY-pV-ehs" secondAttribute="trailing" id="K4s-Oe-qE8"/>

@@ -85,6 +85,17 @@
     UIImageView *imageView2 = (UIImageView *)[cell viewWithTag: 205];
     imageView2.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_calendar_@2x.png",indexPath.row]];
     
+    UIView *customSeparator = (UIView *)[cell viewWithTag:707];
+    if (indexPath.row == 0){
+        
+        customSeparator.hidden = YES;
+        
+    }else{
+        
+        customSeparator.hidden = NO;
+        
+    }
+    
     return cell;
 }
 
