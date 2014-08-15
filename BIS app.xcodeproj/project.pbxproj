@@ -547,6 +547,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "BIS Homework App";
 				PROVISIONING_PROFILE = "03479a50-c650-4881-92bd-adfc0c15de6d";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -563,6 +564,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "BIS Homework App";
 				PROVISIONING_PROFILE = "03479a50-c650-4881-92bd-adfc0c15de6d";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

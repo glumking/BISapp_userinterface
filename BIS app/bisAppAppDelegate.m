@@ -8,6 +8,7 @@
 #import "bisAppAppDelegate.h"
 #import "Menu.h"
 #import "MainMenuTableViewController.h"
+#import <EventKit/EventKit.h>
 
 @implementation bisAppAppDelegate
 {
@@ -16,9 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                                            NSFontAttributeName: [UIFont systemFontOfSize:22.0f]
                                                            }];
+    [self requestCalendarAccess];
     return YES;
 }
 							
@@ -47,6 +50,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)requestCalendarAccess
+{
+    EKEventStore *store = [[EKEventStore alloc] init];
+    
+    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (!granted) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                                message:@"This app needs access to Calendar to set new homeworks to your calendar event. Please add permission to the app from Settings > Privacy > Calendars."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil, nil];
+            
+            [alertView show];
+        }
+    }];
 }
 
 @end
