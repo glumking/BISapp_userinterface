@@ -152,30 +152,23 @@
 {
     TeacherTableViewController *teacherVC = (TeacherTableViewController*) [segue destinationViewController];
     
-    NSDictionary *teacher1 = @{
-                               
-                               @"id":@0,
-                               @"name":@"Philippe",
-                               @"email":@"17pangestup@bis.or.id"
-                               
-                               };
+    [SVProgressHUD show];
     
-    NSDictionary *teacher2 = @{
-                               
-                               @"id":@1,
-                               @"name":@"Hans",
-                               @"email":@"17Wahonoh@bis.or.id"
-                               
-                               };
-    
-    
-    teacherVC.teachers = @[teacher1, teacher2];
+    [NetworkService retrieveTeachersOnSuccess:^(id responseObject) {
+        
+        teacherVC.teachers = responseObject;
+        
+        [teacherVC.tableView reloadData];
+        
+        [SVProgressHUD dismiss];
+        
+    } onFail:^(id operation, NSError *error) {
+        
+        [SVProgressHUD dismiss];
+        
+    }];
     
 }
-
-
-
-#pragma mark - Alert view delegate
 
 
 @end
