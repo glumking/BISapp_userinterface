@@ -7,9 +7,11 @@
 //
 
 #import "TeacherTableViewController.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "MainMenuTableViewController.h"
 
-@interface TeacherTableViewController ()
+@interface TeacherTableViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -38,6 +40,15 @@
     return self.teachers.count ;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *teacherEmail = [self.teachers[indexPath.row] objectForKey:@"email"];
+    
+    [self sendEmailWithDestination:teacherEmail];
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -57,6 +68,30 @@
     email.text = [self.teachers[indexPath.row] objectForKey:@"email"];
     
     return cell;
+    
+}
+
+-(void)sendEmailWithDestination: (NSString *)destinationEmail
+{
+    
+    if ([MFMailComposeViewController canSendMail] ) {
+        
+        MFMailComposeViewController *mailVC = [[MFMailComposeViewController alloc] init];
+        
+        mailVC.mailComposeDelegate = self;
+        
+        [mailVC setToRecipients: @[destinationEmail]];
+        
+        [self presentViewController:mailVC animated:YES completion:nil];
+        
+    }
+    
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

@@ -174,7 +174,13 @@
     
     [NetworkService retrieveTeachersOnSuccess:^(id responseObject) {
         
-        teacherVC.teachers = responseObject;
+        NSMutableArray *teachers = [[NSMutableArray alloc] init];
+        
+        [teachers addObjectsFromArray:[responseObject objectForKey: @"my_teacher"]];
+        
+        [teachers addObjectsFromArray:[responseObject objectForKey: @"other_teachers"]];
+        
+        teacherVC.teachers = teachers;
         
         [teacherVC.tableView reloadData];
         

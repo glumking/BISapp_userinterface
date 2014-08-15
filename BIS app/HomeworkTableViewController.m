@@ -21,9 +21,8 @@
 
 -(void)viewDidLoad
 {
-
-
-
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(-37.0f, 0.0f, 0.0f, 0.0f);
     
     [super viewDidLoad];
     
@@ -38,8 +37,6 @@
 }
 
 #pragma mark - Table view data source
-                               
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -151,7 +148,6 @@
         [CalendarService addEventsToCalendar:self.homework];
         
         [self.refreshControl endRefreshing];
-        
         
     } onFail:^(id operation, NSError *error) {
         
