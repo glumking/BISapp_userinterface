@@ -41,6 +41,22 @@
 
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.title = @"Welcome BIS";
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    self.navigationItem.title = @"Back";
+    
+}
+
 - (void)viewDidLoad
 {
     
@@ -129,6 +145,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([segue.identifier  isEqual: @"homeworkSegue"]){
         
         [self prepareHomeworkSegue:segue];
@@ -174,13 +191,9 @@
     
     [NetworkService retrieveTeachersOnSuccess:^(id responseObject) {
         
-        NSMutableArray *teachers = [[NSMutableArray alloc] init];
+        teacherVC.myteachers = [responseObject objectForKey:@"my_teacher"];
         
-        [teachers addObjectsFromArray:[responseObject objectForKey: @"my_teacher"]];
-        
-        [teachers addObjectsFromArray:[responseObject objectForKey: @"other_teachers"]];
-        
-        teacherVC.teachers = teachers;
+        teacherVC.otherteachers = [responseObject objectForKey:@"other_teachers"];
         
         [teacherVC.tableView reloadData];
         

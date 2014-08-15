@@ -17,6 +17,13 @@
 
 @implementation TeacherTableViewController
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.title = @"Teachers";
+    
+}
 
 - (void)viewDidLoad
 {
@@ -30,28 +37,61 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return 1;
+    return 2;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return self.teachers.count ;
+    if (section == 0 ) {
+        
+        return self.myteachers.count;
+    
+    }else{
+        
+        return self.otherteachers.count;
+        
+    }
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSString *teacherEmail = [self.teachers[indexPath.row] objectForKey:@"email"];
+    NSString *teacherEmail = @"";
+    
+    if (indexPath.section == 0){
+        
+        teacherEmail = [self.myteachers[indexPath.row] objectForKey:@"email"];
+        
+    }else{
+            
+        teacherEmail = [self.otherteachers[indexPath.row] objectForKey:@"email"];
+        
+    }
     
     [self sendEmailWithDestination:teacherEmail];
     
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    if (section == 0){
+        
+        return @"My Teachers";
+        
+    }else{
+        
+        return @"Other Teachers";
+        
+    }
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+   
+        
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TeacherCell"];
     
     if (!cell) {
@@ -61,11 +101,24 @@
         cell.clipsToBounds = YES;
     }
     
-    UILabel *teacherName = (UILabel *)[cell viewWithTag:402];
-    teacherName.text = [self.teachers[indexPath.row] objectForKey:@"name"];
+    if (indexPath.section ==0){
     
-    UILabel *email = (UILabel *)[cell viewWithTag:401];
-    email.text = [self.teachers[indexPath.row] objectForKey:@"email"];
+        UILabel *teacherName = (UILabel *)[cell viewWithTag:402];
+        teacherName.text = [self.myteachers[indexPath.row] objectForKey:@"name"];
+    
+        UILabel *email = (UILabel *)[cell viewWithTag:401];
+        email.text = [self.myteachers[indexPath.row] objectForKey:@"email"];
+        
+    }else{
+        
+        
+        UILabel *teacherName = (UILabel *)[cell viewWithTag:402];
+        teacherName.text = [self.otherteachers[indexPath.row] objectForKey:@"name"];
+        
+        UILabel *email = (UILabel *)[cell viewWithTag:401];
+        email.text = [self.otherteachers[indexPath.row] objectForKey:@"email"];
+        
+    }
     
     return cell;
     

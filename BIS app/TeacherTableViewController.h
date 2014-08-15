@@ -10,6 +10,10 @@
 
 @interface TeacherTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray *teachers;
+@property (nonatomic, strong) NSArray *myteachers;
+
+@property (nonatomic, strong) NSArray *otherteachers;
+
+@property (nonatomic, strong) NSMutableArray *teachers;
 
 @end

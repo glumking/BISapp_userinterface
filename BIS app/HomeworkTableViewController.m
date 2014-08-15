@@ -19,14 +19,22 @@
 
 @implementation HomeworkTableViewController
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.title = @"Homework";
+    
+}
+
 -(void)viewDidLoad
 {
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(-37.0f, 0.0f, 0.0f, 0.0f);
     
     [super viewDidLoad];
     
     [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    
+    [self.refreshControl setTintColor:[UIColor blackColor]];
     
     self.dummylabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 257, 17)];
     
@@ -37,6 +45,8 @@
 }
 
 #pragma mark - Table view data source
+                               
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -148,6 +158,7 @@
         [CalendarService addEventsToCalendar:self.homework];
         
         [self.refreshControl endRefreshing];
+        
         
     } onFail:^(id operation, NSError *error) {
         
