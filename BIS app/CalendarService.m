@@ -20,6 +20,8 @@
     
     [dateFormatter setDateFormat: @"yyyy'-'MM'-'dd"];
     
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT+7"]];
+    
     NSArray *unstoredEvents = [CalendarService removeStoredEvents:events];
     
     for (NSDictionary *event in unstoredEvents)
@@ -69,11 +71,50 @@
 + (NSArray*)removeStoredEvents:(NSArray *)events
 {
     
-    NSMutableArray  *unstoredEvents = [events mutableCopy];
+    NSMutableArray *unstoredEvents = [events mutableCopy];
+    
+    NSMutableArray *guiltyEvents = [[NSMutableArray alloc] init];
     
     NSArray *storedEvents = [[NSUserDefaults standardUserDefaults] objectForKey:@"homeworkEvents"];
     
-    [unstoredEvents removeObjectsInArray:storedEvents];
+    for (NSDictionary *suspectDictionary in unstoredEvents) {
+        
+        BOOL guilty = NO;
+        
+        for (NSDictionary *storedDictionary in storedEvents) {
+            
+            NSString *suspectSubject = [suspectDictionary objectForKey: @"subject_id"];
+            
+            NSString *suspectTitle = [suspectDictionary objectForKey: @"title"];
+            
+            NSString *suspectDescription = [suspectDictionary objectForKey: @"description"];
+            
+            NSString *suspectDueDate = [suspectDictionary objectForKey: @"due_date"];
+            
+            NSString *storedSubject = [storedDictionary objectForKey: @"subject_id"];
+            
+            NSString *storedTitle = [storedDictionary objectForKey: @"title"];
+            
+            NSString *storedDescription = [storedDictionary objectForKey: @"description"];
+            
+            NSString *storedDueDate = [storedDictionary objectForKey: @"due_date"];
+            
+            if( [suspectSubject isEqual: storedSubject] && [suspectTitle isEqual: storedTitle] && [suspectDescription isEqual: storedDescription] && [suspectDueDate isEqual: storedDueDate]){
+                
+                guilty = YES;
+                
+            }
+        }
+        
+        if (guilty){
+            
+            [guiltyEvents addObject:suspectDictionary];
+            
+        }
+        
+    }
+    
+ [unstoredEvents removeObjectsInArray:guiltyEvents];
     
     [CalendarService storeEvents:unstoredEvents];
     
