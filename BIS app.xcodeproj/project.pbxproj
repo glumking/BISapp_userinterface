@@ -144,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F04FF51946CE370005A226 /* MainMenuTableViewController.h */,
+				B9E6A99C199CAB5E00ABAB1E /* NetworkService.h */,
 				B9F04FF61946CE370005A226 /* MainMenuTableViewController.m */,
 				B9F04FFB1946FB420005A226 /* HomeworkTableViewController.h */,
 				B9F04FFC1946FB420005A226 /* HomeworkTableViewController.m */,
@@ -180,7 +181,6 @@
 				B9E6A997199C631400ABAB1E /* CalendarService.m */,
 				B9E6A999199C96D000ABAB1E /* UserService.h */,
 				B9E6A99A199C96D000ABAB1E /* UserService.m */,
-				B9E6A99C199CAB5E00ABAB1E /* NetworkService.h */,
 				B9E6A99D199CAB5E00ABAB1E /* NetworkService.m */,
 			);
 			name = Services;

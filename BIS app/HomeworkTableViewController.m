@@ -7,7 +7,9 @@
 //
 
 #import "HomeworkTableViewController.h"
-#import "UIScrollView+SVPullToRefresh.h"
+#import "ISRefreshControl.h"
+#import "NetworkService.h"
+#import "CalendarService.h"
 
 @interface HomeworkTableViewController ()
 
@@ -22,11 +24,7 @@
     
     [super viewDidLoad];
     
-    [self.tableView addPullToRefreshWithActionHandler:^{
-    
-        //to do add AFNetworking code
-    
-    }];
+    [self.refreshControl addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     
     self.dummylabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 257, 17)];
     
@@ -122,6 +120,28 @@
         return 60;
         
     }
+    
+}
+
+-(void)refreshData
+{
+    
+    [NetworkService retrieveHomeworkOnSuccess:^(id responseObject) {
+        
+        self.homework = responseObject;
+        
+        [self.tableView reloadData];
+        
+        [CalendarService addEventsToCalendar:self.homework];
+        
+        [self.refreshControl endRefreshing];
+        
+        
+    } onFail:^(id operation, NSError *error) {
+        
+        [self.refreshControl endRefreshing];
+
+    }];
     
 }
 
