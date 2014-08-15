@@ -26,7 +26,7 @@
     {
         NSString *homeworkTitle = [event objectForKey: @"title"];
         
-        NSString *homeworkSubject = [event objectForKey: @"subject"];
+        NSString *homeworkSubject = [event objectForKey: @"subject_id"];
         
         NSString *homeworkDescription = [event objectForKey: @"description"];
         

@@ -220,8 +220,8 @@
 		B9F04FB01946AE370005A226 /* BIS app */ = {
 			isa = PBXGroup;
 			children = (
-				B9E6A995199C62C500ABAB1E /* Services */,
 				B9F04FBC1946AE370005A226 /* Main_iPhone.storyboard */,
+				B9E6A995199C62C500ABAB1E /* Services */,
 				B9F04FE21946AEEA0005A226 /* pictures */,
 				B922ABD41994C40A005ED230 /* Model */,
 				B922ABD31994C3DC005ED230 /* ViewControllers */,

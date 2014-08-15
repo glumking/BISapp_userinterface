@@ -65,7 +65,7 @@
     }
     
     UILabel *subjectLabel = (UILabel *)[cell viewWithTag:201];
-    subjectLabel.text = [self.homework[indexPath.row] objectForKey:@"subject"];
+    subjectLabel.text = [self.homework[indexPath.row] objectForKey:@"subject_id"];
     
     UILabel *homeworkDescription = (UILabel *)[cell viewWithTag:206];
     homeworkDescription.text = [self.homework[indexPath.row] objectForKey:@"description"];;
@@ -115,7 +115,7 @@
         
         NSLog(@"The height of dummy label : %d",height);
         
-        return 110+ height;
+        return 110 + height;
     
     }else{
         

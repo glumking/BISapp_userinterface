@@ -12,8 +12,8 @@
 
 +(void) loginWithData:(NSDictionary *)loginData OnSuccess:(void(^)(id responseObject))success onFail:(void(^)(id operation,NSError *error))errorHandler;
 
-+(void) retrieveHomeworkOnSuccess:(void(^)(id))success onFail:(void(^)(id,NSError *))errorHandler;
++(void) retrieveHomeworkOnSuccess:(void(^)(id responseObject))success onFail:(void(^)(id operation,NSError *error))errorHandler;
 
-+(void) retrieveTeachersOnSuccess:(void(^)(id))success onFail:(void(^)(id,NSError *))errorHandler;
++(void) retrieveTeachersOnSuccess:(void(^)(id responseObject))success onFail:(void(^)(id operation,NSError *error))errorHandler;
 
 @end
