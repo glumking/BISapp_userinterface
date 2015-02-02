@@ -7,6 +7,7 @@
 //
 
 #import <AFNetworking.h>
+#import <XMLDictionary.h>
 #import "NetworkService.h"
 #import "UserService.h"
 
@@ -26,8 +27,9 @@
     
     [manager POST:@"/bisdev/login-api.php"
        parameters:loginData
-          success:^(AFHTTPRequestOperation *operation, id responseObject){
+          success:^(AFHTTPRequestOperation *operation, NSXMLParser *responseParser){
               
+              NSDictionary *responseObject = [NSDictionary dictionaryWithXMLParser:responseParser];
               success(responseObject);
               
           }
