@@ -15,18 +15,16 @@
 +(void) loginWithData:(NSDictionary *)loginData OnSuccess:(void(^)(id))success onFail:(void(^)(id,NSError *))errorHandler
 {
     
-    NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://203.153.99.219/"];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"text/html"];
-    
-    [manager POST:@"/login"
+    [manager POST:@"/bisdev/login-api.php"
        parameters:loginData
           success:^(AFHTTPRequestOperation *operation, id responseObject){
               
