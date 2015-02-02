@@ -11,12 +11,17 @@
 #import "NetworkService.h"
 #import "UserService.h"
 
+NSString * const kBaseURLString = @"http://203.153.99.219/";
+NSString * const kLoginPathString = @"/bisdev/login-api.php";
+NSString * const kHomeworkPathString = @"/bisdev/hw-api.php?q=getCurrentHomeworkList";
+NSString * const kTeacherEmailsPathString = @"/bisdev/hw-api.php?q=getEmailList";
+
 @implementation NetworkService
 
 +(void) loginWithData:(NSDictionary *)loginData OnSuccess:(void(^)(id))success onFail:(void(^)(id,NSError *))errorHandler
 {
     
-    NSURL *baseURL = [NSURL URLWithString:@"http://203.153.99.219/"];
+    NSURL *baseURL = [NSURL URLWithString:kBaseURLString];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
@@ -25,7 +30,7 @@
     manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
     
-    [manager POST:@"/bisdev/login-api.php"
+    [manager POST:kLoginPathString
        parameters:loginData
           success:^(AFHTTPRequestOperation *operation, NSXMLParser *responseParser){
               
@@ -44,25 +49,20 @@
 {
     
     
-    NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
+    NSURL *baseURL = [NSURL URLWithString:kBaseURLString];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"text/html"];
-    
-    NSString *userID = [UserService retrieveUserID];
-    
-    NSString *url = [NSString stringWithFormat: @"/homework/list/%@",userID];
-    
-    [manager GET:url
+    [manager GET:kHomeworkPathString
        parameters:nil
-          success:^(AFHTTPRequestOperation *operation, id responseObject){
+          success:^(AFHTTPRequestOperation *operation, NSXMLParser *responseParser){
               
+              NSDictionary *responseObject = [NSDictionary dictionaryWithXMLParser:responseParser];
               success(responseObject);
               
           }
@@ -77,25 +77,20 @@
 +(void) retrieveTeachersOnSuccess:(void(^)(id responseObject))success onFail:(void(^)(id operation,NSError *error))errorHandler
 {
 
-    NSURL *baseURL = [NSURL URLWithString:@"http://fauxhw.appspot.com"];
+    NSURL *baseURL = [NSURL URLWithString:kTeacherEmailsPathString];
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    manager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject: @"text/html"];
-    
-    NSString *userID = [UserService retrieveUserID];
-    
-    NSString *url = [NSString stringWithFormat: @"/teacher/list/%@",userID];
-    
-    [manager GET:url
+    [manager GET:kTeacherEmailsPathString
       parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject){
+         success:^(AFHTTPRequestOperation *operation, NSXMLParser *responseParser){
              
+             NSDictionary *responseObject = [NSDictionary dictionaryWithXMLParser:responseParser];
              success(responseObject);
              
          }
