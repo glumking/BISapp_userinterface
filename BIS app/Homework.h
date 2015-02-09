@@ -10,4 +10,8 @@
 
 @interface Homework : NSObject
 
+@property (nonatomic,strong)NSString *title;
+@property (nonatomic,strong)NSDate *dateDue;
+@property (nonatomic,strong)NSString *task;
+
 @end

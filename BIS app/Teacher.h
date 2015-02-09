@@ -10,4 +10,8 @@
 
 @interface Teacher : NSObject
 
+@property(nonatomic,strong) NSString *surname;
+@property(nonatomic,strong) NSString *forename;
+@property(nonatomic,strong) NSString *email;
+
 @end
